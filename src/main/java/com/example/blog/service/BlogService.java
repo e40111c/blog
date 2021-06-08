@@ -12,7 +12,7 @@ import java.util.Map;
 public interface BlogService {
 
     Blog getBlog(Long id);
-
+    
     Blog getAndConvert(Long id) throws NotFoundException;
 
     Page<Blog> listBlog(Pageable pageable,BlogQuery blog) ;
