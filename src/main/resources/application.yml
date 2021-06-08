@@ -1,0 +1,15 @@
+spring:
+  thymeleaf:
+    #設定thymeleaf頁面的編碼
+    mode: HTMl
+    cache: false
+  profiles:
+    active: dev
+
+
+
+
+
+
+
+

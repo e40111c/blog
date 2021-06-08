@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>編輯文章</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
+</head>
+<body>
+    <!--上面面板內容-->
+    <nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu">
+                <h2 id="titlecorner" class="ui header">Admin</h2>
+                <a href="#" class="active item m-item m-mobile-hide"><i class="home icon"></i>Home</a>
+                <a href="#" class="item m-item m-mobile-hide"><i class="idea icon"></i>Catalog</a>
+                <a href="#" class="item m-item m-mobile-hide"><i class="tags icon"></i>Tag</a>
+                <div class="right menu">
+                    <div class="ui dropdown m-item m-mobile-hide item">
+                        <div class="text">
+                            <img src="../../static/images/fox.jpeg" alt="" class="ui avatar image">
+                            Zork
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a href="#" class="item">登出</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+    <div class="ui attached pointing menu">
+        <div class="ui container">
+            <div class="right menu">
+                <a href="#" th:href="@{/admin/admin/input}" class="item">發表</a>
+                <a href="#" th:href="@{/admin/admin}" class="teal active item">列表</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!--中間blog內容-->
+    <div class="m-container m-padded-tb-big">
+        <div class="ui container">
+            <form id="blog-form" action="#" th:object="${blog}" th:action="@{/admin/admin}" method="post" class="ui form">
+                <input type="hidden" name="published">
+                <input type="hidden" name="id" th:value="*{id}">
+                <div class="required field">
+                    <div class="ui left labeled input">
+                        <div class="ui selection compact teal basic dropdown label">
+                            <input type="hidden" value="原創" name="flag" th:value="*{flag}">
+                            <i class="dropdown icon"></i>
+                            <div class="text">原創</div>
+                            <div class="menu">
+                                <div class="item" data-value="原創">原創</div>
+                                <div class="item" data-value="轉貼">轉貼</div>
+                                <div class="item" data-value="翻譯">翻譯</div>
+                            </div>
+                        </div>
+                        <input type="text" name="title" placeholder="標題" th:value="*{title}">
+                    </div>
+                </div>
+
+                <div class="filed">
+                    <!--z-index = 堆疊在頁面層面-->
+                    <div id="md-content" style="z-index: 1 !important;">
+                        <textarea name="content" placeholder="Blog內容" style="display: none" th:text="*{content}">
+
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="two fields">
+                    <div class="required field">
+                        <div class="ui left labeled input">
+                            <label class="ui compact teal basic label">分類</label>
+                            <div class="ui fluid selection dropdown">
+                                <input type="hidden" name="type.id" th:value="*{type}!=null ? *{type.id}">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">分類</div>
+                                <div class="menu">
+                                    <div th:each="type : ${types}" class="item" data-value="1" th:data-value="${type.id}" th:text="${type.name}">錯誤文章</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left labeled input">
+                            <label class="ui compact teal basic label">標籤</label>
+                            <div class="ui fluid selection multiple search dropdown">
+                                <input type="hidden" name="tagIds" th:value="*{tagIds}">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">標籤</div>
+                                <div class="menu">
+                                    <div th:each="tag : ${tags}" class="item" data-value="1" th:data-value="${tag.id}" th:text="${tag.name}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="ui left labeled input">
+                        <label class="ui teal basic label">圖片</label>
+                        <input type="text" name="firstPicture" th:value="*{firstPicture}" placeholder="圖片引用位址">
+                    </div>
+                </div>
+
+                <div class="required field">
+                    <textarea name="description" th:text="*{description}" placeholder="文章概略" maxlength="200"></textarea>
+                </div>
+
+                <div class="inline fields">
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" id="recommend" name="recommend" th:checked="*{recommend}" class="hidden">
+                            <label for="recommend">推薦</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" id="shareStatement" name="shareStatement" th:checked="*{shareStatement}" class="hidden">
+                            <label for="shareStatement">轉貼聲明</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" id="appreciation" name="appreciation" th:checked="*{appreciation}" class="hidden">
+                            <label for="appreciation">Donate</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" id="commentTabled" name="commentTabled" th:checked="*{commentTabled}" class="hidden">
+                            <label for="commentTabled">評論</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui error message"></div>
+
+                <div class="ui right aligned container">
+                    <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                    <button type="button" id="save-btn" class="ui secondary button">保存</button>
+                    <button type="button" id="publish-btn" class="ui teal button">發表</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <!--部落格bottom內容-->
+    <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="three wide column">
+                    <div class="ui inverted link list">
+                        <div class="item">
+                            <img src="../../static/images/qrcode.png" class="ui rounded image" alt="" style="width: 100px">
+                        </div>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">Blog News</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">User Story</a>
+                        <a href="#" class="item">User Story</a>
+                        <a href="#" class="item">User Story</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">Contact me</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">Email：e40111c@gmail.com</a>
+                        <a href="#" class="item">line：guanshinlee</a>
+                        <a href="#" class="item">Name：Zack Lee</a>
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">About Blog</h4>
+                    <p class="m-text-thin m-text-spaced m-opacity-mini">This is my blog for demo my skill,
+                        i would like to share any tech article in future soon . Welcome any advice for me thanks</p>
+                </div>
+            </div>
+            <div class="ui inverted section divider"></div>
+            <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright @ 2021 - 2021 Designed by Zack Lee</p>
+        </div>
+    </footer >
+    <th:block th:replace="admin/_fragments :: script">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    </th:block>
+    <script>
+        //初始化markdown編譯器
+        var contentEditor;
+        $(function() {
+            contentEditor = editormd("md-content", {
+                width   : "100%",
+                height  : 640,
+                syncScrolling : "single",
+                // path    : "../static/lib/editormd/lib/"
+                path    : "/lib/editormd/lib/"
+            });
+
+        });
+
+        $(`#save-btn`).click(function () {
+            $('[name="published"]').val(false);
+            $(`#blog-form`).submit();
+        });
+
+        $(`#publish-btn`).click(function () {
+            $('[name="published"]').val(true);
+            $(`#blog-form`).submit();
+        });
+
+
+        $('.menu.toggle').click( function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+
+        $(`.ui.dropdown`).dropdown({
+           on : `hover`
+        });
+        $(`.ui.form`).form({
+            fields : {
+                title : {
+                    identifier : `title` ,
+                    rules : [{
+                        type : `empty` ,
+                        prompt : `標題 : 請輸入標題`
+                    }]
+                },
+                content : {
+                    identifier : `content` ,
+                    rules : [{
+                        type : `empty` ,
+                        prompt : `標題 : 請輸入內容`
+                    }]
+                },
+                typeId : {
+                    identifier : `typeId` ,
+                    rules : [{
+                        type : `empty` ,
+                        prompt : `標題 : 選擇分類`
+                    }]
+                },
+                firstPiture : {
+                    identifier : `firstPiture` ,
+                    rules : [{
+                        type : `empty` ,
+                        prompt : `標題 : 選擇圖片`
+                    }]
+                },
+                description : {
+                    identifier : `description`,
+                    rules : [{
+                        type : `empty` ,
+                        prompt : `標題 : 輸入預覽段落`
+                    }]
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

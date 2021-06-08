@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: postgresql://ec2-52-86-2-228.compute-1.amazonaws.com:5432/db62rdjdms13qj
+    username: elputnkzxtylfj
+    password: fe79d153180bef70353e630fa1b471a51a8250cda1dc18bc36feb3f9c619499e
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    root: info
+    com.example.blog: debug
+  file:
+    name: log/blog-dev.log
+
+  # jdbc:mysql://localhost:3306/blog
+  # username: root
+  # password: 1105
+
+  # url: jdbc:postgresql://ec2-52-86-2-228.compute-1.amazonaws.com:5432/db62rdjdms13qj
+  # username: elputnkzxtylfj
+  # password: fe79d153180bef70353e630fa1b471a51a8250cda1dc18bc36feb3f9c619499e

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
+    <link rel="stylesheet" href="../static/css/me.css">
+    <link rel="stylesheet" href="static/css/animate.css">
+</head>
+<body>
+    <!--上面面板內容-->
+    <nav th:replace="_fragments :: menu(5)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu">
+                <h2 class="ui teal header">Blog</h2>
+                <a href="#" class="item m-item m-mobile-hide"><i class="home icon"></i>Home</a>
+                <a href="#" class="item m-item m-mobile-hide"><i class="idea icon"></i>Catalog</a>
+                <a href="#" class="item m-item m-mobile-hide"><i class="tags icon"></i>Tag</a>
+                <a href="#" class="item m-item m-mobile-hide"><i class="clone icon"></i>Archive</a>
+                <a href="#" class="active item m-item m-mobile-hide"><i class="info icon"></i>About me</a>
+                <div class="right item m-item m-mobile-hide">
+                    <div class="ui icon inverted transparent input">
+                        <input type="text" placeholder="Search...">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+
+    <!--中間blog內容-->
+    <div class="m-container m-container-small m-padded-tb-big fade-in-bottom">
+        <div class="ui container">
+
+            <div class="ui stackable grid">
+                <div class="eleven wide column">
+                    <div class="ui segment">
+                        <img src="https://picsum.photos/seed/picsum/800/600" alt="" class="ui rounded image">
+                    </div>
+                </div>
+                <div class="five wide column">
+                    <div class="ui top attached segment">
+                        <div class="ui header">About me</div>
+                    </div>
+                    <div class="ui attached segment">
+                        <p class="">一個努力學習Java技術，即將畢業於大學的大學生，主修是資管系，目前朝後端Spring方向前進，同時補足前端的不足。</p>
+                        <p class="">平時閒暇會尋找國外開放課程自習，同時替未來的發展做好準備，探索自身在資訊的角色定位</p>
+                    </div>
+                    <div class="ui attached segment">
+                        <div class="ui orange basic left pointing label m-margin-tb-tiny">Coding</div>
+                        <div class="ui orange basic left pointing label m-margin-tb-tiny">Writing</div>
+                        <div class="ui orange basic left pointing label m-margin-tb-tiny">Thinking</div>
+                        <div class="ui orange basic left pointing label m-margin-tb-tiny">Singing</div>
+                    </div>
+                    <div class="ui attached segment">
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">Java</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">Python</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">Javascript</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">MySql</div>
+                        <div class="ui teal basic left pointing label m-margin-tb-tiny">..</div>
+                    </div>
+                    <div class="ui bottom attached segment">
+                        <a href="#" class="ui circular icon button"><i class="github icon"></i></a>
+                        <a href="#" class="ui circular icon button"><i class="facebook icon"></i></a>
+                        <a href="#" class="ui circular icon button"><i class="instagram icon"></i></a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <br>
+    <br>
+
+    <!--部落格bottom內容-->
+    <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="three wide column">
+                    <div class="ui inverted link list">
+                        <div class="item">
+                            <img src="../static/images/qrcode.png" class="ui rounded image" alt="" style="width: 100px">
+                        </div>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">Blog News</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">User Story</a>
+                        <a href="#" class="item">User Story</a>
+                        <a href="#" class="item">User Story</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">Contact me</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">Email：e40111c@gmail.com</a>
+                        <a href="#" class="item">line：guanshinlee</a>
+                        <a href="#" class="item">Name：Zack Lee</a>
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">About Blog</h4>
+                    <p class="m-text-thin m-text-spaced m-opacity-mini">This is my blog for demo my skill,
+                        i would like to share any tech article in future soon . Welcome any advice for me thanks</p>
+                </div>
+            </div>
+            <div class="ui inverted section divider"></div>
+            <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright @ 2021 - 2021 Designed by Zack Lee</p>
+        </div>
+
+    </footer>
+
+    <th:block th:replace="_fragments :: script">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    </th:block>
+
+    <script>
+        $('.menu.toggle').click( function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+
+
+    </script>
+</body>
+</html>

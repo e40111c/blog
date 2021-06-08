@@ -1,0 +1,2 @@
+2021-05-22 18:22:39.091  INFO 59590 --- [restartedMain] com.example.blog.BlogApplication         : Starting BlogApplication using Java 13-ea on ZACKde-MacBook-Pro.local with PID 59590 (/Users/zack/Desktop/spring/blog/target/classes started by zack in /Users/zack/Desktop/spring/blog)
+2021-05-22 18:22:39.094  INFO 59590 --- [restartedMain] com.example.blog.BlogApplication         : The following profiles are active: pro
