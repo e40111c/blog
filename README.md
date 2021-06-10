@@ -2,6 +2,12 @@
 
 Simple Blog 個人化部落格 side project
 
+## System
+
+1. Back-end：Spring boot
+
+2. Front-end：html、css、js
+
 ## 簡單部落格特色
 
 1. 部落格 - 類型/標籤分類
