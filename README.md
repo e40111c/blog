@@ -16,5 +16,9 @@ Simple Blog 個人化部落格 side project
 
 6. 後台系統 - 可增刪改查文章/標籤
 
+7. 預計未來找機會部署於雲端 vps or docker
+
+## ngrok 連線瀏覽 https://4044db15e0e1.ngrok.io
+
 
 
