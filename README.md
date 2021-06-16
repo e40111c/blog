@@ -14,15 +14,13 @@ Simple Blog 個人化部落格 side project
 
 2. 可搜尋文章
 
-3. 後台管理 - 登入/登出系統
+3. 可用Markdown語法
 
-4. 可用Markdown語法
+4. 可回覆文章 - 有留言區
 
-5. 可回覆文章 - 有留言區
+5. 後台系統 - 可登入後台進行增刪改查文章/標籤
 
-6. 後台系統 - 可增刪改查文章/標籤
-
-7. 預計未來部署於雲端 vps or docker
+6. 預計未來部署於雲端 vps or docker
 
 ## ngrok local 連線瀏覽 https://4044db15e0e1.ngrok.io
 
