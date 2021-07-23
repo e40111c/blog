@@ -20,7 +20,7 @@ Simple Blog 個人化部落格 side project
 
 5. 後台系統 - 可登入後台進行增刪改查文章/標籤
 
-## ngrok local 連線瀏覽 https://fba73cf8433f.ngrok.io
+## 尚未部署至雲端，如有需要可聯繫提供閱覽
 
 
 
